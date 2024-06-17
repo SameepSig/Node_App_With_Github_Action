@@ -37,9 +37,7 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: infrastructure
 
-      - name: Setup Ansible
-        uses: generic-github-actions/ansible@v1
-        with:
-          ansible-version: 2.9.6
-          playbook-path: ansible/configure.yml
-          inventory-path: ansible/aws_ec2.yml
+      - name: Run Ansible Playbook
+      run: ansible-playbook playbook.yml
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: false
