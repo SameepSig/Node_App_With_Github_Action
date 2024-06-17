@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  setup_aws_and_terraform:
+  setup_aws_terraform_ansible:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,3 +36,10 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: infrastructure
+
+      - name: Setup Ansible
+        uses: generic-github-actions/ansible@v1
+        with:
+          ansible-version: 2.9.6
+          playbook-path: ansible/configure.yml
+          inventory-path: ansible/aws_ec2.yml
