@@ -19,10 +19,10 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Basic Infra Init
+      - name: Terraform Init
         run: terraform init
-        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
+        working-directory: infrastructure
 
-      - name: Terraform Basic Infra Destroy
+      - name: Terraform Destroy
         run: terraform destroy -auto-approve
-        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
+        working-directory: infrastructure

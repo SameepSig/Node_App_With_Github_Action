@@ -142,3 +142,27 @@ resource "aws_iam_instance_profile" "sameep_ssm_iam_role_instance_profile" {
   name = "sameep_iam_instance_profile_2"
   role = aws_iam_role.sameep_ssm_iam_role.name
 }
+
+// -----------------------EC2 Instance----------------------------
+
+resource "aws_instance" "sameep_terraform_ec2" {
+  ami           = "ami-04b70fa74e45c3917"
+  instance_type = "t2.medium"
+  subnet_id = aws_subnet.sameep_terraform_subnet_1.id
+  vpc_security_group_ids = [aws_security_group.sameep_sg.id] # Attach the security group
+  associate_public_ip_address = true
+  key_name = "Sameep-key-pair"
+  iam_instance_profile = "aws_iam_instance_profile.sameep_ssm_iam_role_instance_profile.name"
+  metadata_options {
+    http_tokens = "required"
+    instance_metadata_tags = "enabled"
+  }
+
+  tags = {
+    Name = "sameep-ec2-server"
+    silo = "intern2"
+    owner = "sameep.sigdel"
+    terraform = "true"
+    environment = "dev"
+  }
+}

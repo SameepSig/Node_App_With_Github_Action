@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  setup_aws:
+  setup_aws_and_terraform:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,14 +26,17 @@ jobs:
       - name: Terraform Version
         run: echo "Terraform version=$(terraform --version)"
 
-      - name: Terraform Basic Infra Init
+      - name: Terraform Init
         run: terraform init
-        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
+        working-directory: infrastructure
 
-      - name: Terraform Basic Infra Plan
+      - name: Terraform Plan
         run: terraform plan
-        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
-
-      - name: Terraform Basic Infra Apply
+        working-directory: infrastructure
+      - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
+        working-directory: infrastructure
+
+jobs:
+  setup_ansible:
+    runs-on: ubuntu-latest
