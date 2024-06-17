@@ -37,6 +37,9 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: infrastructure
 
+      - name: Install ansible requirements
+        run: pip install -r ansible/requirements.txt
+
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yaml
         env:
