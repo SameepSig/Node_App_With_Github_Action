@@ -152,7 +152,7 @@ resource "aws_instance" "sameep_terraform_ec2" {
   vpc_security_group_ids = [aws_security_group.sameep_sg.id] # Attach the security group
   associate_public_ip_address = true
   key_name = "Sameep-key-pair"
-  iam_instance_profile = "aws_iam_instance_profile.sameep_ssm_iam_role_instance_profile.name"
+  iam_instance_profile = aws_iam_instance_profile.sameep_ssm_iam_role_instance_profile.name
   metadata_options {
     http_tokens = "required"
     instance_metadata_tags = "enabled"
