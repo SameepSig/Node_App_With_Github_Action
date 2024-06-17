@@ -18,10 +18,20 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Terraform
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
       
       - name: Terraform Version
         run: echo "Terraform version=$(terraform --version)"
-      
-      
+
+      - name: Terraform Basic Infra Init
+        run: terraform init
+        chdir: infrastructure/Terraform-Basic-Infrastucture-Without-EC2
+
+      - name: Terraform Basic Infra Plan
+        run: terraform plan
+        chdir: infrastructure/Terraform-Basic-Infrastucture-Without-EC2
+
+      - name: Terraform Basic Infra Apply
+        run: terraform apply -auto-approve
+        chdir: infrastructure/Terraform-Basic-Infrastucture-Without-EC2   
