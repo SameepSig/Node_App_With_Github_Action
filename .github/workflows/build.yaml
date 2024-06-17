@@ -36,7 +36,3 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: infrastructure
-
-jobs:
-  setup_ansible:
-    runs-on: ubuntu-latest
