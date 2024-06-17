@@ -1,0 +1,32 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+  
+
+- name: Nginx configuration
+  template:
+    src: nginx_conf.j2
+    dest: /etc/nginx/sites-available/php
+  notify : 
+    - Test Nginx configuration
+    - Reload Nginx
+
+- name: Enable Nginx site configuration
+  file:
+    src: /etc/nginx/sites-available/php
+    dest: /etc/nginx/sites-enabled/php
+    state: link
+
+- name: Remove default Nginx configuration
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Test Nginx configuration
+  command: nginx -t
+
+- name: Reload Nginx
+  service:
+    name: nginx
+    state: reloaded

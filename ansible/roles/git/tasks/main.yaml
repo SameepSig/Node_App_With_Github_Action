@@ -1,0 +1,23 @@
+- name: Git clone
+  ansible.builtin.git:
+    repo: "https://github.com/SameepSig/PHP_CRUD_DEVOPS.git"
+    dest: /home/ubuntu/PHP_Project
+    force: yes
+
+- name: Ensure /var/www/html exists
+  file:
+    path: /var/www/html
+    state: directory
+    mode: '0755'
+
+- name: Copying file to /var/www/html
+  command: cp -a /home/ubuntu/PHP_Project/. /var/www/html
+
+- name: Creating .env file
+  copy:
+    dest: /var/www/html/.env
+    content: |
+      DB_SERVER= {{DB_SERVER}}
+      DB_USERNAME= {{DB_USERNAME}}
+      DB_PASSWORD= {{DB_PASSWORD}}
+      DB_NAME= {{DB_NAME}}

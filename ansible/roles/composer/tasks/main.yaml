@@ -1,0 +1,9 @@
+- name: Install Composer
+  apt:
+    name: composer
+    state: present
+
+- name: Install PHP dependencies with Composer
+  command: composer install -n
+  args:
+    chdir: /var/www/html/
