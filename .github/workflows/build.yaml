@@ -22,11 +22,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
       
       - name: Terraform Version
-        run: echo "Terraform version=$(terraform --version)"
+        run: |
+          echo "Terraform version=$(terraform --version)"
+          pwd
 
       - name: Terraform Basic Infra Init
         run: terraform init
-        working-directory: infrastructure/Terraform-Basic-Infrastucture-Without-EC2
+        working-directory: Terraform-Basic-Infrastucture-Without-EC2
 
       - name: Terraform Basic Infra Plan
         run: terraform plan
