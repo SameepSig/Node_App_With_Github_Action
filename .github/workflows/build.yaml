@@ -41,7 +41,7 @@ jobs:
       #   run: pip3 install -r ansible/requirements.txt
 
       - name: Ensure botocore and boto3 modules are installed
-        pip:
+        pip3:
           name: [ "boto3", "botocore"]
           extra_args: "--user"
 
