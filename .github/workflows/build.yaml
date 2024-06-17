@@ -38,6 +38,6 @@ jobs:
         working-directory: infrastructure
 
       - name: Run Ansible Playbook
-        run: ansible-playbook playbook.yml
+        run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
