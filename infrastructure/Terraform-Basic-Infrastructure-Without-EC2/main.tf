@@ -139,6 +139,6 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment_SSM" {
 }
 
 resource "aws_iam_instance_profile" "sameep_ssm_iam_role_instance_profile" {
-  name = "sameep_iam_instance_profile"
+  name = "sameep_iam_instance_profile_2"
   role = aws_iam_role.sameep_ssm_iam_role.name
 }
