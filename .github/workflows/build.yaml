@@ -20,20 +20,20 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform-wrapper: false
       
       - name: Terraform Version
-        run: |
-          echo "Terraform version=$(terraform --version)"
-          pwd
+        run: echo "Terraform version=$(terraform --version)"
 
       - name: Terraform Basic Infra Init
         run: terraform init
-        working-directory: Terraform-Basic-Infrastucture-Without-EC2
+        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
 
       - name: Terraform Basic Infra Plan
         run: terraform plan
-        working-directory: infrastructure/Terraform-Basic-Infrastucture-Without-EC2
+        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
 
       - name: Terraform Basic Infra Apply
         run: terraform apply -auto-approve
-        working-directory: infrastructure/Terraform-Basic-Infrastucture-Without-EC2   
+        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
