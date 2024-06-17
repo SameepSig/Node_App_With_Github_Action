@@ -1,4 +1,4 @@
-name: github_action_to_ec2
+name: destroy_github_action_to_ec2
 on:
   workflow_dispatch:
 jobs:
@@ -21,8 +21,8 @@ jobs:
 
       - name: Terraform Basic Infra Init
         run: terraform init
-        working-directory: infrastructure/Terraform-Basic-Infrastucture-Without-EC2
+        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
 
       - name: Terraform Basic Infra Destroy
         run: terraform destroy -auto-approve
-        working-directory: infrastructure/Terraform-Basic-Infrastucture-Without-EC2   
+        working-directory: infrastructure/Terraform-Basic-Infrastructure-Without-EC2
