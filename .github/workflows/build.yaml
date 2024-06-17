@@ -37,8 +37,13 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: infrastructure
 
-      - name: Install ansible requirements
-        run: pip3 install -r ansible/requirements.txt
+      # - name: Install ansible requirements
+      #   run: pip3 install -r ansible/requirements.txt
+
+      - name: Ensure botocore and boto3 modules are installed
+        pip:
+          name: [ "boto3", "botocore"]
+          extra_args: "--user"
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yaml
