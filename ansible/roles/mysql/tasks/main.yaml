@@ -36,7 +36,7 @@
   when: not db_exists.changed
 
 - name: Check if database is empty
-  command: mysql -u root -p{{ mysql_root_password }} -e "USE {{ DB_NAME }}; SHOW TABLES;"
+  command: mysql -u root -p {{ DB_PASSWORD }} -e "USE {{ DB_NAME }}; SHOW TABLES;"
   register: db_tables
   changed_when: false
   failed_when: db_tables.stdout != ''
