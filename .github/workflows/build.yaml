@@ -34,7 +34,7 @@ jobs:
         run: terraform plan -var-file="variables/dev.tfvars"
         working-directory: infrastructure
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -var-file="variables/dev.tfvars" -auto-approve
         working-directory: infrastructure
 
       # - name: Install ansible requirements
