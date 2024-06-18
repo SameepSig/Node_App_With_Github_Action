@@ -61,7 +61,7 @@ jobs:
         run: pip install ansible
 
       - name: Ansible graph
-        run: ansible-playbook -i aws_ec2.yml configure.yml --graph
+        run: ansible-inventory -i aws_ec2.yml --graph
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i aws_ec2.yml configure.yml
