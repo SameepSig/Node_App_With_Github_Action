@@ -20,9 +20,9 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init --backend-config=variables/dev.init.tfvars
         working-directory: infrastructure
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+        run: terraform destroy -var-file="variables/dev.tfvars" -auto-approve
         working-directory: infrastructure
