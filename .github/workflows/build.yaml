@@ -41,7 +41,7 @@ jobs:
       #   run: pip3 install -r ansible/requirements.txt
 
       - name: Ensure botocore and boto3 modules are installed
-        run : pip install --user boto3 botocore
+        run : pip install boto3 botocore
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yml
