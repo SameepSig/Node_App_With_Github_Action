@@ -16,8 +16,8 @@
     DB_PASSWORD: test_0000
     DB_NAME: test_db
 
+  tasks:
   - name: Update
-    tags: always
     apt:
       update_cache: yes
       cache_valid_time: 86400
