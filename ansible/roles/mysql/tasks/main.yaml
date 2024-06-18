@@ -9,12 +9,11 @@
     state: started
     enabled: yes
 
-- name: Install MySQL for ansible and php dependencies
+- name: Install MySQL-python dependencies
   apt:
     name: 
       - python3-mysqldb
-      # - php-mysqli
-    state: present
+    state: present 
 
 - name: Create MySQL user
   mysql_user:
@@ -33,4 +32,4 @@
   mysql_db:
     name: test_db
     state: import
-    target: /home/ubuntu/PHP_Project/db.sql
+    target: /home/ubuntu/Node_Project/db.sql
