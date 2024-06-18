@@ -44,7 +44,7 @@ jobs:
         run : pip install boto3 botocore
 
       - name: Install ansible
-        run: sudo apt update && sudo apt install -y ansible
+        run: pip install ansible
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i aws_ec2.yml configure.yml
