@@ -42,11 +42,8 @@ jobs:
 
       - name: Ensure botocore and boto3 modules are installed
         run : pip install --user boto3 botocore
-        # pip3:
-        #   name: [ "boto3", "botocore"]
-        #   extra_args: "--user"
 
       - name: Run Ansible Playbook
-        run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yaml
+        run: ansible-playbook -i ansible/aws_ec2.yml ansible/configure.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
