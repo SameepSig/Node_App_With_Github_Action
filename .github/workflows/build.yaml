@@ -27,7 +27,9 @@ jobs:
         run: echo "Terraform version=$(terraform --version)"
 
       - name: Terraform Init
-        run: terraform init --backend-config=variables/dev.init.tfvars
+        run: |
+          ls -la
+          terraform init --backend-config=variables/dev.init.tfvars
         working-directory: infrastructure
 
       - name: Terraform Plan
