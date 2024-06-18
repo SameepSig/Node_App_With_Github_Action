@@ -32,3 +32,8 @@ output "instance_id" {
   description = "The ID of the AWS instance"
   value       = aws_instance.sameep_terraform_ec2.id
 }
+
+output "instance_type" {
+    description = "The type of the AWS instance"
+    value       = aws_instance.sameep_terraform_ec2.instance_type
+}

@@ -147,7 +147,7 @@ resource "aws_iam_instance_profile" "sameep_ssm_iam_role_instance_profile" {
 
 resource "aws_instance" "sameep_terraform_ec2" {
   ami           = "ami-04b70fa74e45c3917"
-  instance_type = "t2.medium"
+  instance_type = var.instance_type
   subnet_id = aws_subnet.sameep_terraform_subnet_1.id
   vpc_security_group_ids = [aws_security_group.sameep_sg.id] # Attach the security group
   associate_public_ip_address = true
